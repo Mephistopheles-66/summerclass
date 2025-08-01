@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blogs</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a> | <a href="/products/">Products</a> |
+        <a href="/blogs/">Blogs</a>
+      </nav>
+      <hr />
+    </header>
+
+    <h1>All Blog Posts</h1>
+    <ul>
+      {% for blog in blogs %}
+      <li><a href="/blogs/{{ blog.id }}/">{{ blog.name }}</a></li>
+      {% endfor %}
+    </ul>
+    <hr />
+    <footer>
+      <p>© 2025 My Marketplace. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

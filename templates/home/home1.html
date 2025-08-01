@@ -1,0 +1,40 @@
+{% extends 'master/base.html' %}
+{% block content %}
+{% load static %}
+<h2 class="mb-4">Featured Products</h2>
+<div class="row">
+  {% for product in products %}
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        {% if product.product_image %}
+        <img 
+          src="{{ product.product_image.url }}"
+          class="card-img-top"
+          alt="{{ product.name }}"
+        />
+        {% else %}
+        <img 
+          src="{% static 'images/default.jpg' %}"
+          class="card-img-top"
+          alt="No image available"
+        />
+        {% endif %}    
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">Rs. {{ product.price }}</p>
+          <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary">View</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<h2 class="mt-5 mb-4">Latest Blogs</h2>
+<div class="list-group">
+  {% for blog in blogs %}
+    <a href="{% url 'blog_detail' blog.pk %}" class="list-group-item list-group-item-action">
+      {{ blog.title }}
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}
