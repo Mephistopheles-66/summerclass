@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -221,167 +223,174 @@
 <!-- section-header.// -->
  
     
+<section class="section-conten padding-y bg">
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-3">
+        <!--   SIDEBAR   -->
+        <ul class="list-group">
+          <a class="list-group-item" href="/dashboard/">
+            Dashboard
+          </a>
+          <a class="list-group-item" href="/my-orders/"> My Orders </a>
+          <a class="list-group-item active" href="/edit-profile/">
+            Edit Profile
+          </a>
+          <a class="list-group-item" href="#"> My Selling Items </a>
+          <a class="list-group-item" href="#"> Received Orders </a>
+          <a class="list-group-item" href="/change-password/">
+            Change Password
+          </a>
+        </ul>
+        <br />
+        <a class="btn btn-light btn-block" href="/accounts/logout/">
+          <i class="fa fa-power-off"></i> <span class="text">Log out</span>
+        </a>
+        <!--   SIDEBAR .//END   -->
+      </aside>
 
-    <!-- ========================= SECTION MAIN ========================= -->
-    <section class="section-intro padding-y-sm">
-      <div class="container">
-        <div class="intro-banner-wrap">
-          <img src="/static/images/banners/2.jpg" class="img-fluid rounded" />
-        </div>
-      </div>
-      <!-- container //  -->
-    </section>
-    <!-- ========================= SECTION MAIN END// ========================= -->
-
-    <!-- ========================= SECTION  ========================= -->
-    <section class="section-name padding-y-sm">
-      <div class="container">
-        <header class="section-heading">
-          <a href="/store/" class="btn btn-outline-primary float-right"
-            >See all</a
-          >
-          <h3 class="section-title">Popular products</h3>
-        </header>
-        <!-- sect-heading -->
-
-        <div class="row">
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/electronics/wireless-noise-cancelling-headphones/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Wireless_Noise_Cancelling_Headphones.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/electronics/wireless-noise-cancelling-headphones/" class="title">
-                  Wireless Noise Cancelling Headphones
-                  </a>
-                <div class="price mt-1">Rs. 15999</div>
-                <!-- price-wrap.// -->
-              </figcaption>
+      <main class="col-md-9">
+        <article class="card">
+          <header class="card-header">
+            <strong class="d-inline-block mr-3">Edit your profile</strong>
+          </header>
+          <div class="card-body">
+            <div class="text-right">
+              <img
+                src="/static/images/default/default-user.png"
+                alt="Profile Picture"
+                width="100"
+                style="border-radius: 50px"
+              />
             </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/home-living/wooden-study-lamp/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Wooden_Study_Lamp.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/home-living/wooden-study-lamp/" class="title">
-                  Wooden Study Lamp
-                  </a>
-                <div class="price mt-1">Rs. 3450</div>
-                <!-- price-wrap.// -->
-              </figcaption>
+            <div class="row">
+              <div class="col-md-12">
+                <form
+                  action="/accounts/edit_profile/"
+                  method="POST"
+                  enctype="multipart/form-data"
+                >
+                  <input
+                    type="hidden"
+                    name="csrfmiddlewaretoken"
+                    value="SIHCbcMTGsQFp8ZZSEubAkmcjh3hIlRenZANRBhU965QBMnt3vAdfh7cra5YXbtM"
+                  />
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>First Name</label>
+                      <input
+                        type="text"
+                        name="first_name"
+                        value="Islington"
+                        maxlength="50"
+                        class="form-control"
+                        required
+                        id="id_first_name"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Last Name</label>
+                      <input
+                        type="text"
+                        name="last_name"
+                        value="College"
+                        maxlength="50"
+                        class="form-control"
+                        required
+                        id="id_last_name"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>Phone Number</label>
+                      <input
+                        type="text"
+                        name="phone_number"
+                        value="9812344567"
+                        maxlength="50"
+                        class="form-control"
+                        required
+                        id="id_phone_number"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Profile Picture</label>
+                      <input
+                        type="file"
+                        name="profile_picture"
+                        accept="image/*"
+                        class="form-control"
+                        id="id_profile_picture"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Address Line 1</label>
+                    <input
+                      type="text"
+                      name="address_line_1"
+                      maxlength="100"
+                      class="form-control"
+                      id="id_address_line_1"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Address Line 2</label>
+                    <input
+                      type="text"
+                      name="address_line_2"
+                      maxlength="100"
+                      class="form-control"
+                      id="id_address_line_2"
+                    />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label>City</label>
+                      <input
+                        type="text"
+                        name="city"
+                        maxlength="20"
+                        class="form-control"
+                        id="id_city"
+                      />
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label>State</label>
+                      <input
+                        type="text"
+                        name="state"
+                        maxlength="20"
+                        class="form-control"
+                        id="id_state"
+                      />
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label>Country</label>
+                      <input
+                        type="text"
+                        name="country"
+                        maxlength="20"
+                        class="form-control"
+                        id="id_country"
+                      />
+                    </div>
+                  </div>
+                  <input type="submit" value="Save" class="btn btn-primary" />
+                </form>
+              </div>
             </div>
+            <!-- row.// -->
           </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/books/the-psychology-of-money/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/The_Psychology_of_Money.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/books/the-psychology-of-money/" class="title">
-                  The Psychology of Money
-                  </a>
-                <div class="price mt-1">Rs. 1499</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/accessories/vintage-leather-wallet/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Vintage_Leather_Wallet.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/accessories/vintage-leather-wallet/" class="title">
-                  Vintage Leather Wallet
-                  </a>
-                <div class="price mt-1">Rs. 2899</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/electronics/smart-fitness-band/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Smart_Fitness_Band.png" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/electronics/smart-fitness-band/" class="title">
-                  Smart Fitness Band
-                  </a>
-                <div class="price mt-1">Rs. 3299</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/tshirt/basic-white-t-shirt/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/White_Tshirt.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/tshirt/basic-white-t-shirt/" class="title">
-                  Basic White T-Shirt
-                  </a>
-                <div class="price mt-1">Rs. 2000</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/electronics/4k-android-smart-tv-43-inch/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/4K_Android_Smart_TV__43_Inch.jpg" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/electronics/4k-android-smart-tv-43-inch/" class="title">
-                  4K Android Smart TV – 43 Inch
-                  </a>
-                <div class="price mt-1">Rs. 45000</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/home-living/decorative-wall-clock/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Decorative_Wall_Clock.jpg" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/home-living/decorative-wall-clock/" class="title">
-                  Decorative Wall Clock
-                  </a>
-                <div class="price mt-1">Rs. 2250</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-        </div>
-        <!-- row.// -->
-      </div>
-      <!-- container // -->
-    </section>
-    <!-- ========================= SECTION  END// ========================= -->
-
-
+          <!-- card-body .// -->
+        </article>
+        <!-- order-group.// -->
+      </main>
+    </div>
+    <!-- row.// -->
+  </div>
+</section>
  
     <!-- ========================= FOOTER ========================= -->
 <footer class="section-footer border-top">
