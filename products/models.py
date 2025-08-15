@@ -1,8 +1,23 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
+    #slug = models.SLugField(max_length=100, unique=True)
+    slug= models.SlugField(max_length=200, blank=True, null=True)
+    description = models.TextField(blank=True)
+    category_image = models. ImageField (upload_to="photos/categories/", blank=True)
+    created_date = models. DateTimeField(default=timezone.now)
+    updated_date = models.DateTimeField(default=timezone.now)
+    status = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+    def get_url(self):
+        return reverse('products_by_category', args=(self.slug))    
 
     def __str__(self):
         return self.name
@@ -10,6 +25,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=200, blank=True, null=True)
     price = models.FloatField()
     description = models.TextField()
     stock = models.IntegerField(default=1)
@@ -17,7 +33,10 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
     product_image = models.ImageField(upload_to='photos/products', blank=True)
-    slug = models.SlugField(unique=True)
+    #slug = models.SlugField(unique=True)
+
+    def get_url(self):
+        return reverse('product_detail', args=(self.category.slug, self.slug))
 
     def __str__(self):
         return self.name
