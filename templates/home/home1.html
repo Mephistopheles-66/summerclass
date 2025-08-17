@@ -26,135 +26,23 @@
         <!-- sect-heading -->
 
         <div class="row">
-          
+          {% for product in products %}
           <div class="col-md-3">
             <div class="card card-product-grid">
-              <a href="/store/category/electronics/wireless-noise-cancelling-headphones/" class="img-wrap">
+              <a href="{{ product.get_url }}" class="img-wrap">
                 
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Wireless_Noise_Cancelling_Headphones.webp" />
+                <img src="{{ product.images.url}}" />
               </a>
               <figcaption class="info-wrap">
-                <a href="/store/category/electronics/wireless-noise-cancelling-headphones/" class="title">
-                  Wireless Noise Cancelling Headphones
+                <a href="{{ product.get_url }}" class="title">
+                  {{ product.name }}
                   </a>
                 <div class="price mt-1">Rs. 15999</div>
                 <!-- price-wrap.// -->
               </figcaption>
             </div>
           </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/home-living/wooden-study-lamp/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Wooden_Study_Lamp.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/home-living/wooden-study-lamp/" class="title">
-                  Wooden Study Lamp
-                  </a>
-                <div class="price mt-1">Rs. 3450</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/books/the-psychology-of-money/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/The_Psychology_of_Money.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/books/the-psychology-of-money/" class="title">
-                  The Psychology of Money
-                  </a>
-                <div class="price mt-1">Rs. 1499</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/accessories/vintage-leather-wallet/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Vintage_Leather_Wallet.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/accessories/vintage-leather-wallet/" class="title">
-                  Vintage Leather Wallet
-                  </a>
-                <div class="price mt-1">Rs. 2899</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/electronics/smart-fitness-band/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Smart_Fitness_Band.png" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/electronics/smart-fitness-band/" class="title">
-                  Smart Fitness Band
-                  </a>
-                <div class="price mt-1">Rs. 3299</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/tshirt/basic-white-t-shirt/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/White_Tshirt.webp" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/tshirt/basic-white-t-shirt/" class="title">
-                  Basic White T-Shirt
-                  </a>
-                <div class="price mt-1">Rs. 2000</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/electronics/4k-android-smart-tv-43-inch/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/4K_Android_Smart_TV__43_Inch.jpg" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/electronics/4k-android-smart-tv-43-inch/" class="title">
-                  4K Android Smart TV – 43 Inch
-                  </a>
-                <div class="price mt-1">Rs. 45000</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="/store/category/home-living/decorative-wall-clock/" class="img-wrap">
-                
-                <img src="https://mohit-bucket.s3.us-east-1.amazonaws.com/media/photos/products/Decorative_Wall_Clock.jpg" />
-              </a>
-              <figcaption class="info-wrap">
-                <a href="/store/category/home-living/decorative-wall-clock/" class="title">
-                  Decorative Wall Clock
-                  </a>
-                <div class="price mt-1">Rs. 2250</div>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          
+          {% endfor %}
         </div>
         <!-- row.// -->
       </div>

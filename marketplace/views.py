@@ -7,13 +7,19 @@ from django.apps import AppConfig
 
 
 def home(request):
-    products = Product.objects.all()
+    products = Product.objects.all().filter(status=True)
+    # banners = Banner.objects.all().filter(status=True)
+    categories = Category.objects.all().filter(status=True)
     blogs = blog.objects.all()
-    return render(request, 'home/home1.html', {
+
+    context= {
         'products': products,
+        #'banners': banners,
+        'categories': categories,
         'blogs': blogs
 
-        })
+        }
+    return render(request, 'home/home1.html', context)
 
 def user_login(request):
     return render(request, "user/login.html")

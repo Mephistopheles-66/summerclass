@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'blog.apps.BlogConfig',
     'pages.apps.PagesConfig',
-    'sitesetting.apps.SitesettingConfig'
+    'sitesetting.apps.SitesettingConfig',
+    'carts.apps.CartsConfig',
 ]
 
 MIDDLEWARE = [
