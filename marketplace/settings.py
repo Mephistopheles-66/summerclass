@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts.apps.AccountsConfig',
     'products.apps.ProductsConfig',
     'blog.apps.BlogConfig',
     'pages.apps.PagesConfig',
@@ -76,12 +77,15 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'pages.context_processors.page_links',
                 'sitesetting.context_processors.site_settings'
+                'cart.context_processors.counter'
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'marketplace.wsgi.application'
+
+AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Database

@@ -1,0 +1,13 @@
+[
+{
+  "model": "sitesetting.sitesetting",
+  "pk": 1,
+  "fields": {
+    "site_title": "MarketPlace",
+    "meta_description": "Marketplace",
+    "meta_keywords": null,
+    "logo": "photos/logos/Logo_4f530817-0609-4c9a-9a3c-9dc07fe57988_213130_.PNG",
+    "favicon": "photos/favicons/appletouchicon_bc59847f-bf9d-462a-b262-93819f051845_213130_.png"
+  }
+}
+]
