@@ -1412,4 +1412,16 @@ a[class*=card]:hover .title {
   display: block;
 }
 
+/* User profile in dashboard */
+
+.profile-img {
+  width: 80px;           /* fixed width */
+  height: 80px;          /* fixed height */
+  border-radius: 50%;    /* makes it round */
+  object-fit: cover;     /* crops the image nicely */
+  object-position: center; /* centers the crop */
+  border: 2px solid #ddd; /* optional border */
+}
+
+
 /*# sourceMappingURL=ui.css.map */

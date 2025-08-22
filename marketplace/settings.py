@@ -10,9 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
 import os
-import dj_database_url
+from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,17 +22,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0nmg7yv$nnxlud!d3-1br01rwe3-4&c0msfhaj071*7%!pfh)h'
+SECRET_KEY = 'django-insecure-ap7ufx1z&&7d!!*+y4l77jx-e7j=vl$d&2ow$jt1+#nttbn!ir'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'summerclass-c5w1.onrender.com',
+    'django-marketplace-env.eba-fuq2sjw6.us-west-2.elasticbeanstalk.com',
     '127.0.0.1',
-    'localhost',
+    # For eSewa
+    # "http://127.0.0.1:8000"
 ]
 
+# For eSewa
+# SITE_URL = "http://127.0.0.1:8000"
 
 # Application definition
 
@@ -44,11 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'category.apps.CategoryConfig',
     'accounts.apps.AccountsConfig',
-    'products.apps.ProductsConfig',
-    'blog.apps.BlogConfig',
-    'pages.apps.PagesConfig',
+    'store.apps.StoreConfig',
     'sitesetting.apps.SitesettingConfig',
+    'banner.apps.BannerConfig',
     'carts.apps.CartsConfig',
 ]
 
@@ -60,7 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'marketplace.urls'
@@ -75,9 +77,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'pages.context_processors.page_links',
-                'sitesetting.context_processors.site_settings'
-                'cart.context_processors.counter'
+                'category.context_processor.menu_links',
+                'sitesetting.context_processor.site_settings',
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -92,17 +94,11 @@ AUTH_USER_MODEL = 'accounts.Account'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': BASE_DIR / 'db.sqlite3',
-     }
- }
-
-#DATABASES = {
-#   'default': dj_database_url.config(
-#        default=os.environ.get('DATABASE_URL'),
-#    )
-#    }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Use SQLite for local development
+    }
+}
 
 
 # Password validation
@@ -139,25 +135,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / 'static',           # now safely points to static folder at root
 ]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # destination for collectstatic
+
+# media files configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# media files configuration
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+from django.contrib.messages import constants as messages
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://summerclass-c5w1.onrender.com',
-]
+MESSAGE_TAGS = {
+    messages.DEBUG: 'secondary',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',  # maps "error" → Bootstrap red
+}
+
+# SMTP configuration
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mahatprasanna7@gmail.com'
+EMAIL_HOST_PASSWORD = 'lgbn mhlr nevc urbi'
+EMAIL_USE_TLS = True

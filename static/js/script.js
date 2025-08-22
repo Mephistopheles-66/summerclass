@@ -57,3 +57,7 @@ $(document).ready(function() {
     
 }); 
 // jquery end
+
+setTimeout(function(){
+    $('#custom-alert').fadeOut('slow')
+}, 4000)

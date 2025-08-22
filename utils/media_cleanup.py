@@ -1,8 +1,7 @@
 import os
 
 def delete_old_file_on_update(instance, model, field_name):
-    """Delete the old file from disk when updateing the field."""
-
+    """Delete the old file from disk when updating the field."""
     if not instance.pk:
         return
     try:
@@ -10,13 +9,13 @@ def delete_old_file_on_update(instance, model, field_name):
     except model.DoesNotExist:
         return
     old_file = getattr(old_instance, field_name)
-    new_file = getattr(instance, field_name)   
+    new_file = getattr(instance, field_name)
     if old_file and old_file != new_file:
         if os.path.isfile(old_file.path):
             os.remove(old_file.path)
 
 def delete_file_on_delete(instance, field_name):
-    """Delete the file from disk when the instance is deleted"""
+    """Delete the file from disk when the instance is deleted."""
     file_field = getattr(instance, field_name)
     if file_field and os.path.isfile(file_field.path):
-        os.remove(file_field.path)             
+        os.remove(file_field.path)

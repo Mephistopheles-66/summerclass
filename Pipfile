@@ -4,14 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pillow = "*"
 django-jazzmin = "*"
-django = "*"
+pillow = "*"
+django-admin-honeypot-updated-2021 = "*"
 psycopg2-binary = "*"
-dj-database-url = "*"
-python-decouple = "*"
-gunicorn = "*"
-whitenoise = "*"
+django = "*"
 
 [dev-packages]
 
