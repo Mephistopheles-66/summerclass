@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'sitesetting.apps.SitesettingConfig',
     'banner.apps.BannerConfig',
     'carts.apps.CartsConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [
@@ -170,3 +171,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mahatprasanna7@gmail.com'
 EMAIL_HOST_PASSWORD = 'lgbn mhlr nevc urbi'
 EMAIL_USE_TLS = True
+
+# For eSewa
+ESEWA_PRODUCT_CODE = "EPAYTEST"
+ESEWA_SECRET_KEY = "8gBm/:&EnhH.1/q"
+ESEWA_FORM_URL = "https://rc-epay.esewa.com.np/api/epay/main/v2/form"

@@ -14,6 +14,10 @@
   <a class="list-group-item {% if request.resolver_match.url_name == 'my_orders' %}active{% endif %}" href="{% url 'my_orders' %}">
     My Orders
   </a>
+  
+  <a class="list-group-item {% if request.resolver_match.url_name == 'my_sales' %}active{% endif %}" href="{% url 'my_sales' %}">
+    My Sales
+  </a>  
 
   <a class="list-group-item {% if request.resolver_match.url_name == 'edit_profile' %}active{% endif %}" href="{% url 'edit_profile' %}">
     Edit Profile

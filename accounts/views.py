@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from orders.models import Order, OrderProduct
 from .forms import RegistrationForm
 from . models import Account
 from django.shortcuts import redirect, get_object_or_404, HttpResponse
@@ -269,6 +271,27 @@ def add_product(request):
         form = ProductForm()
     return render(request, "accounts/add_product.html", {"form": form})
 
+@login_required(login_url = 'user_login' )
+def my_orders(request):
+    orders = Order.objects.filter(user=request.user, is_ordered=True).order_by('-created_at')
+    context = {
+        'orders': orders
+    }
+    return render(request, 'accounts/orders/my_orders.html', context)
+
+@login_required(login_url = 'user_login')
+def my_sales(request):
+    data = (
+        OrderProduct.objects
+        .filter(product_owner=request.user, order_is_ordered=True) # items for my products
+        .select_related('order', 'product', 'user')   # using to speed by joining minimizing extra queries
+        .prefetch_related('variations')  # to show variations
+        .order_by('-created_at')
+    )
+    context = {
+    'data': data
+    }
+    return render(request, 'accounts/orders/my_sales.html', context)
 
 @login_required(login_url = 'user_login')
 def edit_profile(request):
@@ -298,3 +321,34 @@ def change_password(request):
     else:
         form = CustomPasswordChangeForm(request.user)
     return render(request, 'accounts/change_password.html', {'form': form})
+
+@login_required(login_url='user_login' )
+def order_detail(request, order_id) :
+    user = request.user
+
+    # buyer's orders
+    buyer_qs = Order.objects. filter(order_number=order_id, user=user)
+
+    # seller's orders (any product they own)
+    seller_qs = Order.objects.filter(
+        order_number=order_id,
+        orderproduct_product_owner=user
+    )    
+
+    order = (buyer_qs | seller_qs).distinct().first()
+
+    if not order:
+        return render(request, 'master/404.html', status=404)
+
+    order_detail = OrderProduct.objects. filter(order=order)
+    subtotal = 0
+
+    for i in order_detail:
+        subtotal += i.product_price * i.quantity
+
+    context = {
+        'order_detail': order_detail,
+        'order': order,
+        'subtotal': subtotal
+    }
+    return render(request, 'accounts/orders/order_detail.html', context)

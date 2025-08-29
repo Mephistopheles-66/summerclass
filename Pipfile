@@ -9,6 +9,7 @@ pillow = "*"
 django-admin-honeypot-updated-2021 = "*"
 psycopg2-binary = "*"
 django = "*"
+django-admin-thumbnails = "*"
 
 [dev-packages]
 

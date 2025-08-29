@@ -27,6 +27,9 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     # path('messages/', include('message.urls')),
     path('cart/', include('carts.urls')),
+
+    # Orders
+    path('orders/', include('orders.urls')),
 ]
 
 

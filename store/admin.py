@@ -1,8 +1,16 @@
 from django.contrib import admin
-from . models import Product, Variation
+from . models import Product, Variation, ProductGallery
+#Review
 from django.utils.html import format_html
+import admin_thumbnails
 
 # Register your models here.
+
+@admin_thumbnails. thumbnail('image')
+class ProductGalleryInline(admin. TabularInline):
+    model = ProductGallery
+    extra = 1
+
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('product_name', 'price', 'stock', 'category','is_approved', 'updated_date', 'status', 'image_preview')
@@ -11,6 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ("product_name", "owner__email", "owner__first_name")
     list_editable = ("is_approved", "status")  # approve directly in list page
     readonly_fields = ('image_preview',)
+    inlines = [ProductGalleryInline]
     
     def image_preview(self, obj):
         if obj.images:
